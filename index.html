@@ -408,6 +408,23 @@
   .note.err { color: #9A4A2E; }
   .note.ok { color: var(--bronze); }
 
+  .thanks {
+    max-width: 400px; margin: 0 auto; text-align: center;
+    padding: 34px 26px 30px;
+    border: 1px solid var(--gold-soft); border-radius: 14px;
+    background: linear-gradient(180deg, #FFFDF8, #FBF5E8);
+    animation: rise .9s cubic-bezier(.2, .7, .2, 1) both;
+  }
+  .thanks .t-mono {
+    width: 60px; height: 60px; margin: 0 auto 14px;
+    border-radius: 50%; border: 1px solid var(--gold);
+    display: grid; place-items: center;
+    font-family: var(--script); font-size: 26px; color: var(--bronze);
+  }
+  .thanks .t-title { font-family: var(--script); font-size: 2em; color: var(--bronze); line-height: 1.1; }
+  .thanks .t-text { margin: 12px 0 0; font-size: 1.05em; }
+  .thanks .t-sign { margin-top: 16px; font-size: .78em; letter-spacing: .3em; text-transform: uppercase; color: var(--ink-soft); }
+
   footer {
     padding: 54px 24px 64px;
     text-align: center;
@@ -607,6 +624,12 @@
       <button class="btn solid" type="submit" id="rsvpBtn">Envoyer ma réponse</button>
       <p class="note" id="rsvpNote"></p>
     </form>
+    <div class="thanks" id="thanks" hidden>
+      <div class="t-mono">S<small style="font-size:.55em">&amp;</small>S</div>
+      <div class="t-title">Merci</div>
+      <p class="t-text"></p>
+      <div class="t-sign">Soukayna &amp; Mohamed</div>
+    </div>
   </section>
 
   <footer>
@@ -637,8 +660,6 @@ const CONFIG = {
   mapsUrl: "https://maps.google.com/?q=33.447941,-7.714547",
   dressCode: "Tenue traditionnelle ou élégante. Les tons clairs et dorés sont les bienvenus.",
   rsvpDeadline: "18/09/2026",
-  // Numéro WhatsApp qui reçoit les réponses, format international sans + ni espaces (ex : 2126XXXXXXXX)
-  whatsapp: "212610067228",
   // Formulaire Google qui enregistre chaque réponse dans la feuille « Réponses mariage Soukayna & Mohamed »
   sheetForm: {
     action: "https://docs.google.com/forms/d/e/1FAIpQLScBoQDXUbp-YwuLRdib-_4B0yTJRcvHac0cpX76LjAoxuRxuQ/formResponse",
@@ -758,24 +779,25 @@ form.addEventListener("submit", e => {
   }
   const withLabel = companion === "duo" ? "accompagné(e) de mon/ma conjoint(e)" : "seul(e)";
   const msg = form.message.value.trim();
-  const lines = [
-    `Mariage de ${CONFIG.bride} & ${CONFIG.groom} – ${yes ? "Confirmation de présence" : "Réponse"}`,
-    `Nom : ${name}`,
-    yes ? `Présence : oui, avec joie, ${withLabel}` : "Présence : je ne pourrai malheureusement pas venir",
-  ];
-  if (msg) lines.push(`Message : ${msg}`);
-  const text = encodeURIComponent(lines.join("\n"));
-  const number = (CONFIG.whatsapp || "").replace(/\D/g, "");
   const answerLabel = yes ? `Je serai présent(e), ${withLabel}` : "Je ne pourrai pas venir";
   const btn = document.getElementById("rsvpBtn");
-  btn.disabled = true;
-  saveToSheet(name, answerLabel, msg).finally(() => {
-    btn.disabled = false;
-    note.className = "note ok";
-    note.textContent = "Merci, votre réponse est bien enregistrée. WhatsApp s'ouvre pour l'envoyer aux mariés.";
-    if (number) window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener");
-  });
+  btn.disabled = true; btn.textContent = "Envoi en cours…";
+  note.className = "note"; note.textContent = "";
+  saveToSheet(name, answerLabel, msg).finally(() => showThanks(name, yes));
 });
+
+// Message de confirmation, à la place du formulaire.
+function showThanks(name, yes) {
+  const first = name.split(/\s+/)[0];
+  const box = document.getElementById("thanks");
+  box.querySelector(".t-title").textContent = yes ? `Merci ${first}, quelle joie !` : `Merci ${first}`;
+  box.querySelector(".t-text").textContent = yes
+    ? "Votre réponse est bien arrivée jusqu'à nous. Nous avons hâte de partager ce jour avec vous, et de vous serrer dans nos bras le 4 octobre."
+    : "Votre réponse est bien arrivée jusqu'à nous. Vous nous manquerez ce jour-là, et nous vous garderons une place dans nos pensées.";
+  form.hidden = true;
+  box.hidden = false;
+  box.scrollIntoView({ behavior: "smooth", block: "center" });
+}
 
 // Enregistre la réponse dans la feuille Google (envoi silencieux, sans quitter la page).
 function saveToSheet(name, answer, message) {
