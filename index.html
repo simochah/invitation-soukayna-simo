@@ -6,7 +6,7 @@
 <title>Soukayna & Mohamed</title>
 <meta name="description" content="Invitation au mariage de Soukayna & Mohamed, le 4 octobre 2026">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
   :root {
     --ivory: #FBF7EF;
@@ -19,7 +19,7 @@
     --ink: #3B3128;
     --ink-soft: #77695A;
     --line: #E3D6B9;
-    --script: 'Great Vibes', 'Snell Roundhand', 'Brush Script MT', cursive;
+    --script: 'Allura', 'Snell Roundhand', 'Brush Script MT', cursive;
     --serif: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
     --arabic: 'Amiri', 'Scheherazade New', 'Noto Naskh Arabic', serif;
     --w: 520px;
@@ -139,8 +139,8 @@
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, .55);
   }
-  .seal .monogram { width: 78%; height: 78%; }
-  footer .mono .monogram { width: 84%; height: 84%; }
+  .seal .monogram { width: 66%; height: 66%; }
+  footer .mono .monogram { width: 70%; height: 70%; }
   .seal:hover { transform: translate(-50%, -50%) scale(1.04); }
   #env.opening .seal { transform: translate(-50%, -50%) scale(.6); opacity: 0; pointer-events: none; }
   .env-hint {
@@ -457,7 +457,7 @@
     </div>
     <div class="env-body"></div>
     <div class="env-flap"></div>
-    <button class="seal" id="seal" aria-label="Ouvrir l'invitation"><svg class="monogram" viewBox="0 0 100 100" aria-hidden="true"><text x="50" y="66" text-anchor="middle" font-family="Great Vibes, Snell Roundhand, cursive" font-size="58" fill="currentColor"><tspan>S</tspan><tspan font-size="40" dx="-13" dy="-3">&amp;</tspan><tspan dx="-12" dy="3">S</tspan></text></svg></button>
+    <button class="seal" id="seal" aria-label="Ouvrir l'invitation"><svg class="monogram" viewBox="0 0 100 100" aria-hidden="true"><text x="50" y="64" text-anchor="middle" font-family="Allura, Snell Roundhand, cursive" font-size="50" fill="currentColor"><tspan>S</tspan><tspan font-size="34" dx="-11" dy="-3">&amp;</tspan><tspan dx="-10" dy="3">S</tspan></text></svg></button>
     <div class="env-hint">Touchez le sceau</div>
   </div>
 </div>
@@ -598,16 +598,13 @@
         <label class="label" for="f-msg">Un petit mot (facultatif)</label>
         <textarea id="f-msg" name="message" placeholder="Un message pour les mariés"></textarea>
       </div>
-      <button class="btn solid" type="submit">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5.1-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4.2-.4c.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3z"/></svg>
-        Envoyer ma réponse sur WhatsApp
-      </button>
-      <p class="note" id="rsvpNote">Votre réponse s'ouvre dans WhatsApp, prête à envoyer aux mariés.</p>
+      <button class="btn solid" type="submit" id="rsvpBtn">Envoyer ma réponse</button>
+      <p class="note" id="rsvpNote">Votre réponse est enregistrée, puis s'ouvre dans WhatsApp pour l'envoyer aux mariés.</p>
     </form>
   </section>
 
   <footer>
-    <div class="mono"><svg class="monogram" viewBox="0 0 100 100" aria-hidden="true"><text x="50" y="66" text-anchor="middle" font-family="Great Vibes, Snell Roundhand, cursive" font-size="58" fill="currentColor"><tspan>S</tspan><tspan font-size="40" dx="-13" dy="-3">&amp;</tspan><tspan dx="-12" dy="3">S</tspan></text></svg></div>
+    <div class="mono"><svg class="monogram" viewBox="0 0 100 100" aria-hidden="true"><text x="50" y="64" text-anchor="middle" font-family="Allura, Snell Roundhand, cursive" font-size="50" fill="currentColor"><tspan>S</tspan><tspan font-size="34" dx="-11" dy="-3">&amp;</tspan><tspan dx="-10" dy="3">S</tspan></text></svg></div>
     <div class="love">Avec tout notre amour,</div>
     <div class="names">Soukayna &amp; Mohamed</div>
     <div class="d">04 · 10 · 2026</div>
@@ -640,9 +637,16 @@ const CONFIG = {
   dressCode: "Tenue traditionnelle ou élégante. Les tons clairs et dorés sont les bienvenus.",
   rsvpDeadline: "18/09/2026",
   // Numéro WhatsApp qui reçoit les réponses, format international sans + ni espaces (ex : 2126XXXXXXXX)
-  whatsapp: "",
+  whatsapp: "212610067228",
   // Musique : URL ou data URI d'un fichier mp3. Vide = ambiance générée automatiquement.
   musicUrl: "",
+  // Formulaire Google qui enregistre chaque réponse dans la feuille « Réponses mariage Soukayna & Mohamed »
+  sheetForm: {
+    action: "https://docs.google.com/forms/d/e/1FAIpQLScBoQDXUbp-YwuLRdib-_4B0yTJRcvHac0cpX76LjAoxuRxuQ/formResponse",
+    name: "entry.111159691",
+    answer: "entry.23192658",
+    message: "entry.1029367013",
+  },
   program: [
     { time: "15h30", label: "Accueil des invités", icon: "tea" },
     { time: "16h00", label: "Entrée des mariés", icon: "rings" },
@@ -821,14 +825,26 @@ form.addEventListener("submit", e => {
   if (msg) lines.push(`Message : ${msg}`);
   const text = encodeURIComponent(lines.join("\n"));
   const number = (CONFIG.whatsapp || "").replace(/\D/g, "");
-  if (!number) {
-    note.className = "note err";
-    note.textContent = "Le numéro WhatsApp des mariés n'est pas encore renseigné (CONFIG.whatsapp).";
-    return;
-  }
-  note.className = "note ok"; note.textContent = "Merci. WhatsApp s'ouvre avec votre réponse.";
-  window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener");
+  const answerLabel = yes ? "Je serai présent(e)" : "Je ne pourrai pas venir";
+  const btn = document.getElementById("rsvpBtn");
+  btn.disabled = true;
+  saveToSheet(name, answerLabel, msg).finally(() => {
+    btn.disabled = false;
+    note.className = "note ok";
+    note.textContent = "Merci, votre réponse est bien enregistrée. WhatsApp s'ouvre pour l'envoyer aux mariés.";
+    if (number) window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener");
+  });
 });
+
+// Enregistre la réponse dans la feuille Google (envoi silencieux, sans quitter la page).
+function saveToSheet(name, answer, message) {
+  const f = CONFIG.sheetForm;
+  if (!f || !f.action) return Promise.resolve();
+  const body = new URLSearchParams();
+  body.set(f.name, name); body.set(f.answer, answer); body.set(f.message, message || "");
+  const p = fetch(f.action, { method: "POST", mode: "no-cors", body, keepalive: true }).catch(() => {});
+  return Promise.race([p, new Promise(r => setTimeout(r, 2500))]);
+}
 
 /* ---------- Apparition au défilement ---------- */
 if ("IntersectionObserver" in window) {
